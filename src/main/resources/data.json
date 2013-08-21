@@ -1,0 +1,10 @@
+[
+    {
+        "_class": "appfactory.model.Post",
+        "id": 1
+    },
+    {
+        "_class": "appfactory.model.Post",
+        "id" : 2
+    }
+]
