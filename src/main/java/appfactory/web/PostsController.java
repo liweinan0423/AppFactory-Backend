@@ -1,7 +1,7 @@
 package appfactory.web;
 
 import appfactory.model.Post;
-import appfactory.persistence.PostRepository;
+import appfactory.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,11 +28,10 @@ public class PostsController {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public String index(Model model) {
-        Page<Post> posts = postRepository.findAll(new PageRequest(0, 2));
-        model.addAttribute("posts", posts);
-
-        return "/posts/index";
+    public String postList(Model model, Pageable pageable) {
+        Page<Post> page = postRepository.findAll(pageable);
+        model.addAttribute("page", page);
+        return "/posts/list";
     }
 
 }

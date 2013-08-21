@@ -1,8 +1,6 @@
-package appfactory.persistence;
+package appfactory.repositories;
 
 import appfactory.model.Post;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,7 +11,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * To change this template use File | Settings | File Templates.
  */
 public interface PostRepository extends JpaRepository<Post, Long> {
-
-    public Page<Post> findAll(Pageable pageable);
 
 }

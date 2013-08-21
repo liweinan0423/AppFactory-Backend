@@ -14,7 +14,7 @@
                            http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository.xsd">
 
 
-    <jpa:repositories base-package="appfactory.persistence"></jpa:repositories>
+    <jpa:repositories base-package="appfactory.repositories"></jpa:repositories>
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceProviderClass" value="org.hibernate.ejb.HibernatePersistence"/>

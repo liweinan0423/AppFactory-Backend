@@ -5,6 +5,7 @@ import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Entity
@@ -20,6 +21,8 @@ public class Post {
     @CreatedDate
     private Date createdAt;
 
+    @ManyToOne
+    private PostCategory category;
 
     public Long getId() {
         return id;
