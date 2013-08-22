@@ -1,5 +1,10 @@
+<%@ tag pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="common" tagdir="/WEB-INF/tags/common" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<%@ attribute name="posts" required="true" type="java.util.List" %>
 <table>
     <thead>
     <tr>
@@ -11,22 +16,22 @@
     </tr>
     </thead>
     <tbody>
-    <c:if test="${not page.hasContent()}">
-        <h2>没有文章可以显示</h2>
-    </c:if>
-    <c:if test="${page.hasContent()}">
-        <c:forEach items="${page.content}" var="post">
-            <tr>
-                <td>${post.id}</td>
-                <td>${post.title}</td>
-                <td>${post.createdAt}</td>
-                <td>${post.content}</td>
-                <td></td>
-            </tr>
-        </c:forEach>
-    </c:if>
+    <c:forEach items="${posts}" var="post">
+        <tr>
+            <td>${post.id}</td>
+            <td>${post.title}</td>
+            <td>${post.createdAt}</td>
+            <td>${post.content}</td>
+            <td>
+                <spring:url value="/post_categories/${category_id}/posts/${post.id}/edit" var="edit_post_path" />
+                <a href="${edit_post_path}">编辑</a>
+
+                <spring:url value="/post_categories/${category_id}/posts/${post.id}" var="post_path" />
+                <form:form action="${post_path}" method="DELETE" cssStyle="display:inline">
+                    <a onclick="if (confirm('are you sure?')){this.parentNode.submit();} return false;" type="submit">删除</a>
+                </form:form>
+            </td>
+        </tr>
+    </c:forEach>
     </tbody>
 </table>
-<div>
-    <common:pagination></common:pagination>
-</div>

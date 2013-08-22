@@ -1,4 +1,4 @@
-<%@ tag body-content="scriptless" trimDirectiveWhitespaces="true" %>
+<%@ tag body-content="scriptless" trimDirectiveWhitespaces="true" pageEncoding="UTF-8" %>
 <%@ attribute name="pageTitle" required="false" rtexprvalue="true" %>
 
 <%@ taglib prefix="template" tagdir="/WEB-INF/tags/templates" %>

@@ -1,6 +1,13 @@
 package appfactory.model;
 
-import javax.persistence.*;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,28 +18,14 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class PostCategory {
-    @Id
-    @GeneratedValue
-    private Long id;
+@SessionAttributes(types = PostCategory.class)
+public class PostCategory extends BaseEntity {
 
+    @NotEmpty
     private String name;
 
-    @ManyToOne
-    private PostCategory parent;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parent")
-    private List<PostCategory> subCategories;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL)
     private List<Post> posts;
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -42,22 +35,6 @@ public class PostCategory {
         this.name = name;
     }
 
-    public PostCategory getParent() {
-        return parent;
-    }
-
-    public void setParent(PostCategory parent) {
-        this.parent = parent;
-    }
-
-    public List<PostCategory> getSubCategories() {
-        return subCategories;
-    }
-
-    public void setSubCategories(List<PostCategory> subCategories) {
-        this.subCategories = subCategories;
-    }
-
     public List<Post> getPosts() {
         return posts;
     }
@@ -65,4 +42,14 @@ public class PostCategory {
     public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
+
+    public void addPost(Post post) {
+        if (this.posts == null) {
+            posts = new ArrayList<Post>();
+        }
+
+        posts.add(post);
+        post.setCategory(this);
+    }
+
 }
