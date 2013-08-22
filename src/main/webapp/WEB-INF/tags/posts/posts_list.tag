@@ -5,7 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%@ attribute name="posts" required="true" type="java.util.List" %>
-<table>
+<table class="table">
     <thead>
     <tr>
         <th>ID</th>
@@ -28,7 +28,7 @@
 
                 <spring:url value="/post_categories/${category_id}/posts/${post.id}" var="post_path" />
                 <form:form action="${post_path}" method="DELETE" cssStyle="display:inline">
-                    <a onclick="if (confirm('are you sure?')){this.parentNode.submit();} return false;" type="submit">删除</a>
+                    <a data-confirm="are you sure?1" class="alert" type="submit">删除</a>
                 </form:form>
             </td>
         </tr>

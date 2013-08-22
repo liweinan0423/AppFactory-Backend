@@ -13,7 +13,7 @@
     <form:hidden path="id" />
     <common:textField name="title" label="文章标题" />
     <common:textField name="content" label="文章内容" />
-    <div class="form-actions">
-        <button type="submit">确定</button>
+    <div class="">
+        <button type="submit" class="btn btn-default">确定</button>
     </div>
 </form:form>
