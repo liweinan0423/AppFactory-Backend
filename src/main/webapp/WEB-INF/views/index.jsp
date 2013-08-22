@@ -2,21 +2,19 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="template" tagdir="/WEB-INF/tags/templates" %>
 <%@ taglib prefix="posts" tagdir="/WEB-INF/tags/posts" %>
-<template:master>
+<template:master activeMenu="home">
     <jsp:body>
         <!-- Main jumbotron for a primary marketing message or call to action -->
-        <div class="jumbotron">
-            <div class="container">
-                <h1>Hello, world!</h1>
+        <div class="container">
+            <h1>Hello, world!</h1>
 
-                <p>This is a template for a simple marketing or informational website. It includes a large callout
-                    called the
-                    hero unit and three supporting pieces of content. Use it as a starting point to create something
-                    more
-                    unique.</p>
+            <p>This is a template for a simple marketing or informational website. It includes a large callout
+                called the
+                hero unit and three supporting pieces of content. Use it as a starting point to create something
+                more
+                unique.</p>
 
-                <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-            </div>
+            <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
         </div>
 
         <div class="container">

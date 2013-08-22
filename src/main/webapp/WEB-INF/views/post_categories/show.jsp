@@ -5,8 +5,9 @@
 <%@ taglib prefix="posts" tagdir="/WEB-INF/tags/posts" %>
 <template:master>
     <jsp:body>
-        <h3>${postCategory.name}</h3>
-
+        <div class="page-header">
+            <h3>${postCategory.name}</h3>
+        </div>
         <posts:posts_list posts="${postCategory.posts}"></posts:posts_list>
     </jsp:body>
 </template:master>

@@ -1,9 +1,11 @@
 <%@ tag body-content="scriptless" trimDirectiveWhitespaces="true" pageEncoding="UTF-8" %>
-<%@ attribute name="pageTitle" required="false" rtexprvalue="true" %>
 
 <%@ taglib prefix="template" tagdir="/WEB-INF/tags/templates" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ attribute name="pageTitle" required="false" rtexprvalue="true" %>
+<%@ attribute name="activeMenu" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,9 +27,9 @@
 
 <body>
 
-<template:nav_bar/>
+<template:nav_bar activeMenu="${activeMenu}"/>
 
-<div class="container jumbotron">
+<div class="jumbotron">
     <jsp:doBody/>
 </div>
 <template:javaScript/>
