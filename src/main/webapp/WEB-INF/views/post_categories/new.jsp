@@ -4,6 +4,6 @@
 <%@ taglib prefix="post_categories" tagdir="/WEB-INF/tags/post_categories" %>
 <template:master pageTitle="新增分类">
     <jsp:body>
-        <post_categories:category_form />
+            <post_categories:category_form/>
     </jsp:body>
 </template:master>

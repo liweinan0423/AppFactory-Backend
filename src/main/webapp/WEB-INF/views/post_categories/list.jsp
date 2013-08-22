@@ -4,9 +4,11 @@
 <%@ taglib prefix="post_categories" tagdir="/WEB-INF/tags/post_categories" %>
 <template:master pageTitle="分类列表">
     <jsp:body>
-        <div>
-            <a href="${pageContext.request.contextPath}/post_categories/new" class="button">新增分类</a>
+        <div class="row">
+            <a href="${pageContext.request.contextPath}/post_categories/new" class="btn btn-default">新增分类</a>
         </div>
-        <post_categories:categories_list />
+        <div class="row">
+            <post_categories:categories_list/>
+        </div>
     </jsp:body>
 </template:master>

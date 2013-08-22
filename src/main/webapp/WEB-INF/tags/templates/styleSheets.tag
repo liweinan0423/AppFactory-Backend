@@ -1,6 +1,6 @@
-<link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/css/blueprint/screen.css" />
-<!--[if IE 7]>
-<link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/css/blueprint/ie.css" />
-<![endif]-->
-<link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/css/blueprint/plugins/buttons/screen.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/css/blueprint/plugins/link-icons/screen.css" />
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<spring:url value="/resources/bootstrap-3.0/css/bootstrap.min.css" var="bootstrap_url" />
+<spring:url value="/resources/bootstrap-3.0/css/bootstrap-theme.min.css" var="bootstrap_theme_url" />
+<link rel="stylesheet" type="text/css" href="${bootstrap_url}" />
+<link rel="stylesheet" type="text/css" href="${bootstrap_theme_url}" />

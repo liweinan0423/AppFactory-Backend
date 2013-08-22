@@ -5,10 +5,9 @@
 <%@ taglib prefix="common" tagdir="/WEB-INF/tags/common" %>
 
 <form:form action="/post_categories/create" method="POST" commandName="postCategory">
-
     <common:textField name="name" label="分类名称" />
     <form:errors />
     <div class="form-actions">
-        <button type="submit">确定</button>
+        <button type="submit" class="btn btn-default">确定</button>
     </div>
 </form:form>

@@ -4,21 +4,34 @@
 <%@ taglib prefix="template" tagdir="/WEB-INF/tags/templates" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>${not empty pageTitle ? pageTitle : 'Default Title'}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>${pageTitle}</title>
 
-    <%-- CSS Files Are Loaded First as they can be downloaded in parallel --%>
-    <template:styleSheets/>
+    <template:styleSheets></template:styleSheets>
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="${pageContext.request.contextPath}/resources/common/js/html5shiv.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/common/js/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body class="showgrid">
-<div class="container">
-    <h1>App后台管理</h1>
+
+<body>
+
+<template:nav_bar/>
+
+<div class="container jumbotron">
     <jsp:doBody/>
 </div>
 <template:javaScript/>
+
 </body>
 </html>
+

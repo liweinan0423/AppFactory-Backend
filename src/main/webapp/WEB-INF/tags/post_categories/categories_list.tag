@@ -2,8 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="common" tagdir="/WEB-INF/tags/common" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
-<table>
+<table class="table">
     <thead>
     <tr>
         <th>ID</th>
@@ -22,7 +21,7 @@
             </td>
             <td>${category.createdAt}</td>
             <td>
-                <spring:url value="/post_categories/${category.id}/posts/new" var="add_post_path" />
+                <spring:url value="/post_categories/${category.id}/posts/new" var="add_post_path"/>
                 <a href="${add_post_path}">添加文章</a>
                 <a href="">修改</a>
                 <a href="">删除</a>

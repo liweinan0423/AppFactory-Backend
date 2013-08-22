@@ -17,6 +17,11 @@
 
     <mvc:default-servlet-handler/>
 
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars" />
+
+
+    <mvc:view-controller path="/" view-name="/index" />
 
     <bean id="conversionService" class="org.springframework.core.convert.support.DefaultConversionService"/>
 
