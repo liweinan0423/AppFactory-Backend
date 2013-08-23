@@ -3,3 +3,4 @@
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript" src="${bootstrap_js_path}"></script>
+<script type="text/javascript" src="<spring:url value='/resources/common/js/ujs.js' />"></script>

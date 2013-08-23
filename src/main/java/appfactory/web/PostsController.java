@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -50,7 +51,7 @@ public class PostsController {
         return "/post_categories/new";
     }
 
-    @RequestMapping(value = "create", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String createCategory(@Valid PostCategory category, BindingResult result) {
         if (result.hasErrors()) {
             return "/post_categories/new";
@@ -76,7 +77,7 @@ public class PostsController {
         return "/posts/new";
     }
 
-    @RequestMapping(value = "{category_id}/posts/create", method = RequestMethod.POST)
+    @RequestMapping(value = "{category_id}/posts", method = RequestMethod.POST)
     public String createPost(@PathVariable("category_id") Long category_id, @Valid Post post, BindingResult result) {
         if (result.hasErrors()) {
             return "/posts/new";

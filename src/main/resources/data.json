@@ -1,0 +1,26 @@
+{
+    "_class": "appfactory.model.MenuPage",
+    "id": -1,
+    "cells": [
+        {
+            "_class": "appfactory.model.Cell",
+            "title": "cell"
+        },
+        {
+            "_class": "appfactory.model.Cell",
+            "title": "cell"
+        },
+        {
+            "_class": "appfactory.model.Cell",
+            "title": "cell"
+        },
+        {
+            "_class": "appfactory.model.Cell",
+            "title": "cell"
+        },
+        {
+            "_class": "appfactory.model.Cell",
+            "title": "cell"
+        }
+    ]
+}
