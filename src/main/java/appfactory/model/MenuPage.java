@@ -16,7 +16,7 @@ public class MenuPage {
     @Id
     private Long id;
 
-    private LayoutType layoutType;
+    private String layoutType;
 
     @OneToMany(mappedBy = "menuPage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @OrderBy("order")
@@ -30,15 +30,13 @@ public class MenuPage {
         this.cells = cells;
     }
 
-    public LayoutType getLayoutType() {
+    public String getLayoutType() {
         return layoutType;
     }
 
-    public void setLayoutType(LayoutType layoutType) {
+    public void setLayoutType(String layoutType) {
         this.layoutType = layoutType;
     }
-
-
 
     public Long getId() {
         return id;

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
@@ -78,6 +77,27 @@ public class AppConfigController {
         return "redirect:/appconfig/menu_page/cells";
     }
 
+    @RequestMapping(value = "menu_page/layout", method = RequestMethod.GET)
+    public String showMenuPageLayoutForm(Model model) {
+
+        String[] layout_enums = new String[]{"GRID_9", "GRID_16", "LIST"};
+
+        model.addAttribute("layout_enums", layout_enums);
+        model.addAttribute(menuPageRepository.findDefaultMenuPage());
+
+        return "/appconfig/menu_page/layout_config";
+    }
+
+    @RequestMapping(value = "menu_page/layout", method = RequestMethod.PUT)
+    public String saveMenuPageLayout(String layoutType) {
+
+        MenuPage menuPage = menuPageRepository.findDefaultMenuPage();
+        menuPage.setLayoutType(layoutType);
+
+        menuPageRepository.save(menuPage);
+
+        return "redirect:/appconfig/menu_page/layout";
+    }
 
 
 }
