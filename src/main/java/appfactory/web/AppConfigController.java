@@ -1,5 +1,6 @@
 package appfactory.web;
 
+import appfactory.dto.MenuPageConfig;
 import appfactory.model.Cell;
 import appfactory.model.MenuPage;
 import appfactory.repositories.CellRepository;
@@ -83,7 +84,11 @@ public class AppConfigController {
         String[] layout_enums = new String[]{"GRID_9", "GRID_16", "LIST"};
 
         model.addAttribute("layout_enums", layout_enums);
-        model.addAttribute(menuPageRepository.findDefaultMenuPage());
+        MenuPage defaultMenuPage = menuPageRepository.findDefaultMenuPage();
+        model.addAttribute(defaultMenuPage);
+
+        //for json view
+        model.addAttribute("layout_type", defaultMenuPage.getLayoutType());
 
         return "/appconfig/menu_page/layout_config";
     }
