@@ -12,7 +12,7 @@
 
     <form:hidden path="id" />
     <common:textField name="title" label="文章标题" />
-    <common:textField name="content" label="文章内容" />
+    <common:ckEditor name="content" label="文章内容" />
     <div class="">
         <button type="submit" class="btn btn-default">确定</button>
     </div>
