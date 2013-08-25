@@ -19,7 +19,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${contactInfoList}" var="contactInfo">
+            <c:forEach items="${contact_info_list}" var="contactInfo">
                 <tr>
                     <td>${contactInfo.phoneName}</td>
                     <td>${contactInfo.phoneNumber}</td>

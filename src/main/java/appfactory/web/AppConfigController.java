@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,7 +31,7 @@ import java.io.IOException;
  */
 @Controller
 @RequestMapping("/appconfig")
-public class AppConfigController {
+public class AppConfigController extends AbstractBaseController {
 
     @Autowired
     private CellRepository cellRepository;
@@ -53,6 +56,7 @@ public class AppConfigController {
     @RequestMapping("menu_page/cells/new")
     public String showCreateCellForm(Model model) {
         model.addAttribute(new Cell());
+
         return "/appconfig/menu_page/add_cell";
     }
 
@@ -89,6 +93,7 @@ public class AppConfigController {
 
         //for json view
         model.addAttribute("layout_type", defaultMenuPage.getLayoutType());
+        model.addAttribute("cells", defaultMenuPage.getCells());
 
         return "/appconfig/menu_page/layout_config";
     }
@@ -103,6 +108,4 @@ public class AppConfigController {
 
         return "redirect:/appconfig/menu_page/layout";
     }
-
-
 }

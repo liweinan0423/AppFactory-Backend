@@ -11,6 +11,9 @@
         <form:form action="/appconfig/menu_page/cells" enctype="multipart/form-data" method="post" class="form" role="form" commandName="cell">
             <common:textField name="title" label="标题" />
             <common:numberField name="order" label="排序" />
+
+            <common:selectField name="functionCode" label="功能代码" valueMap="${function_code_map}" />
+
             <label>图标</label>
             <input type="file" name="icon" class="form-control" />
 

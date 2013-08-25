@@ -1,5 +1,7 @@
 package appfactory.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -24,6 +26,7 @@ public class Cell extends BaseEntity {
     private String iconURL;
 
     @ManyToOne
+    @JsonIgnore
     private MenuPage menuPage;
 
     public MenuPage getMenuPage() {

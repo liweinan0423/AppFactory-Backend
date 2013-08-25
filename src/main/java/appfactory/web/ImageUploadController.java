@@ -21,7 +21,7 @@ import java.util.UUID;
  */
 @Controller
 @RequestMapping(value = "/images/upload", method = RequestMethod.POST)
-public class ImageUploadController {
+public class ImageUploadController extends AbstractBaseController {
 
     @RequestMapping
     public String upload(MultipartFile upload, HttpServletRequest request, Model model) throws IOException {

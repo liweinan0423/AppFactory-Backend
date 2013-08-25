@@ -27,7 +27,7 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping("post_categories")
-public class PostsController {
+public class PostsController extends AbstractBaseController {
 
     @Autowired
     private PostCategoryRepository postCategoryRepository;

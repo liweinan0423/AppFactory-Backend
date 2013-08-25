@@ -13,14 +13,14 @@
                 <img src="<spring:url value='${cell.iconURL}' />" width="100" height="100" class="img-rounded"/>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-8">
             <div class="row">
                 <div class="col-md-6">标题</div>
                 <div class="col-md-6">${cell.title}</div>
             </div>
             <div class="row">
                 <div class="col-md-6">功能代码</div>
-                <div class="col-md-6">${cell.title}</div>
+                <div class="col-md-6">${function_code_map[cell.functionCode]}</div>
             </div>
         </div>
     </div>

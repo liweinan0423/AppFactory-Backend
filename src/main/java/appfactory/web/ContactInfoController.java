@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("contact_info")
-public class ContactInfoController {
+public class ContactInfoController extends AbstractBaseController {
 
     @Autowired
     private ContactInfoRepository contactInfoRepository;
@@ -31,7 +31,7 @@ public class ContactInfoController {
     public String listContactInfo(Model model) {
         List<ContactInfo> contactInfoList = contactInfoRepository.findAll();
 
-        model.addAttribute("contactInfoList", contactInfoList);
+        model.addAttribute("contact_info_list", contactInfoList);
 
         return "/contact_info/list";
     }
