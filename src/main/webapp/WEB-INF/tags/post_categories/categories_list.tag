@@ -12,7 +12,7 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${page.content}" var="category">
+    <c:forEach items="${postCategories}" var="category">
         <tr>
             <td>${category.id}</td>
             <td>
@@ -30,6 +30,3 @@
     </c:forEach>
     </tbody>
 </table>
-<div>
-    <common:pagination></common:pagination>
-</div>

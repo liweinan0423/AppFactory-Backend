@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -39,9 +40,9 @@ public class PostsController extends AbstractBaseController {
     private PostRepository postRepository;
 
     @RequestMapping
-    public String listPostCategories(Model model, Pageable pageRequest) {
-        Page<PostCategory> page = postCategoryRepository.findAll(pageRequest);
-        model.addAttribute("page", page);
+    public String listPostCategories(Model model) {
+        List<PostCategory> postCategories = postCategoryRepository.findAll();
+        model.addAttribute("postCategories", postCategories);
         return "post_categories/list";
     }
 
