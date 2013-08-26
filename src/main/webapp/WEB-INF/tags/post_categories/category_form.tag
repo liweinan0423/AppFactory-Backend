@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="common" tagdir="/WEB-INF/tags/common" %>
 
-<form:form action="/post_categories" method="POST" commandName="postCategory">
+<form:form servletRelativeAction="/post_categories" method="POST" commandName="postCategory">
     <common:textField name="name" label="分类名称" />
     <form:errors />
     <div class="form-actions">

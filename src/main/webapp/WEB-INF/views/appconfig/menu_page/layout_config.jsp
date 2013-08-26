@@ -5,9 +5,11 @@
 <%@ taglib prefix="appconfig" tagdir="/WEB-INF/tags/appconfig" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <template:master>
     <jsp:body>
-        <form:form action="/appconfig/menu_page/layout" method="put" commandName="menuPage">
+
+        <form:form servletRelativeAction="/appconfig/menu_page/layout" method="put" commandName="menuPage">
             <form:radiobutton id="GRID_9"  path="layoutType" value="GRID_9" />
             <label for="GRID_9">九宫格</label>
 

@@ -8,7 +8,7 @@
 <%@ attribute name="commandName" required="true" %>
 <%@ attribute name="action" required="true" %>
 
-<form:form action="${action}" method="${method}" commandName="${commandName}">
+<form:form servletRelativeAction="${action}" method="${method}" commandName="${commandName}">
 
     <form:hidden path="id" />
     <common:textField name="phoneName" label="电话名称" />

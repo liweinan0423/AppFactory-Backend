@@ -8,7 +8,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <template:master>
     <jsp:body>
-        <form:form action="/appconfig/menu_page/cells" enctype="multipart/form-data" method="post" class="form" role="form" commandName="cell">
+        <form:form servletRelativeAction="/appconfig/menu_page/cells" enctype="multipart/form-data" method="post" class="form" role="form" commandName="cell">
             <common:textField name="title" label="标题" />
             <common:numberField name="order" label="排序" />
 
