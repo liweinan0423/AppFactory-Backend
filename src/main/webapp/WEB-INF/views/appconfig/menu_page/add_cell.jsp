@@ -14,6 +14,12 @@
 
             <common:selectField name="functionCode" label="功能代码" valueMap="${function_code_map}" />
 
+            <select>
+                <c:forEach items="${postCategories}" var="postCategory">
+                    <option value="${postCategory.id}">${postCategory.name}</option>
+                </c:forEach>
+             </select>
+
             <label>图标</label>
             <input type="file" name="icon" class="form-control" />
 

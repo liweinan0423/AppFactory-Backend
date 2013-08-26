@@ -18,7 +18,8 @@ public class AbstractBaseController {
     public Map<String, String> getFunctionCodeMap() {
         Map<String, String> map = new HashMap<String, String>();
         map.put("CONTACT_INFO", "一键呼叫");
-
+        map.put("POST_CATEGORY", "文章分类");
+        map.put("POST", "文章");
         return map;
     }
 

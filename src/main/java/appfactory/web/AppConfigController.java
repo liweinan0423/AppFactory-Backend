@@ -3,8 +3,10 @@ package appfactory.web;
 import appfactory.dto.MenuPageConfig;
 import appfactory.model.Cell;
 import appfactory.model.MenuPage;
+import appfactory.model.PostCategory;
 import appfactory.repositories.CellRepository;
 import appfactory.repositories.MenuPageRepository;
+import appfactory.repositories.PostCategoryRepository;
 import appfactory.services.AppConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,6 +42,9 @@ public class AppConfigController extends AbstractBaseController {
     @Autowired
     private MenuPageRepository menuPageRepository;
 
+    @Autowired
+    private PostCategoryRepository postCategoryRepository;
+
 
     @Autowired
     private AppConfigService appConfigService;
@@ -47,8 +53,7 @@ public class AppConfigController extends AbstractBaseController {
     public String showCells(Model model, HttpServletRequest request) {
 
         MenuPage menuPage = menuPageRepository.findDefaultMenuPage();
-
-        model.addAttribute("menuPage", menuPage);
+        model.addAttribute(menuPage);
 
         return "/appconfig/menu_page/cells_list";
     }
@@ -56,7 +61,8 @@ public class AppConfigController extends AbstractBaseController {
     @RequestMapping("menu_page/cells/new")
     public String showCreateCellForm(Model model) {
         model.addAttribute(new Cell());
-
+        List<PostCategory> postCategories = postCategoryRepository.findAll();
+        model.addAttribute("postCategories", postCategories);
         return "/appconfig/menu_page/add_cell";
     }
 
