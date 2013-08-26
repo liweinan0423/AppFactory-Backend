@@ -1,5 +1,6 @@
 package appfactory.services;
 
+import appfactory.dto.CellData;
 import appfactory.model.Cell;
 import appfactory.model.MenuPage;
 import appfactory.repositories.CellRepository;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -50,5 +52,15 @@ public class AppConfigServiceImpl implements AppConfigService {
         cell.setMenuPage(menuPage);
 
         cellRepository.save(cell);
+    }
+
+    @Override
+    public List<CellData> getCells() {
+        MenuPage menuPage = menuPageRepository.findDefaultMenuPage();
+        for (Cell cell : menuPage.getCells()) {
+
+        }
+
+        return null;
     }
 }

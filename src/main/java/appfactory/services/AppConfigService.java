@@ -1,9 +1,11 @@
 package appfactory.services;
 
+import appfactory.dto.CellData;
 import appfactory.model.Cell;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,5 +17,7 @@ import java.io.IOException;
 public interface AppConfigService {
 
     public void addCellToMenuPage(Cell cell, MultipartFile icon, String uploadDirPath) throws IOException;
+
+    public List<CellData> getCells();
 
 }

@@ -19,7 +19,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="<c:url value='/post_categories' />">文章管理</a></li>
                         <li><a href="<c:url value='/appconfig/menu_page/layout' />">菜单布局</a></li>
-                        <li><a href="<c:url value='/appconfig/menu_page/cells' />">宫格模板</a></li>
+                        <li><a href="<c:url value='/appconfig/menu_page/cells' />">宫格配置</a></li>
                     </ul>
                 </li>
             </ul>
