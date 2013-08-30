@@ -20,6 +20,7 @@
                         <li><a href="<c:url value='/post_categories' />">文章管理</a></li>
                         <li><a href="<c:url value='/appconfig/menu_page/layout' />">菜单布局</a></li>
                         <li><a href="<c:url value='/appconfig/menu_page/cells' />">宫格配置</a></li>
+                        <li><a href="<c:url value='/company_info/edit' />">企业信息</a></li>
                     </ul>
                 </li>
             </ul>
