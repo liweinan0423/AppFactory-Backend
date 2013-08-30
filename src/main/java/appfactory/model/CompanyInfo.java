@@ -2,6 +2,7 @@ package appfactory.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,14 +15,25 @@ import javax.persistence.Id;
 public class CompanyInfo {
 
 
+    @Id
     private Long id;
 
-    @Id
+    @Lob
+    private String content;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

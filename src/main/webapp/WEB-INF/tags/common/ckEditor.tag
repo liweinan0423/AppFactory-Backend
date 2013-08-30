@@ -10,8 +10,18 @@
     <c:set var="cssGroup" value="form-group ${status.error ? 'error' : '' }"/>
     <div class="${cssGroup}">
         <label>${label}</label>
+
         <div>
-            <form:textarea path="${name}" cssClass="form-control ckeditor"/>
+            <form:textarea id="${name}" path="${name}" cssClass="form-control"/>
+            <script type="text/javascript">
+                window.onload = function() {
+                    CKEDITOR.replace("${name}", {
+                        language: "zh-cn",
+                        filebrowserUploadUrl:"<c:url value='/images/upload' />"
+                    })
+                }
+
+            </script>
             <span class="help-inline">${status.errorMessage}</span>
         </div>
     </div>

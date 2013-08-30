@@ -3,5 +3,9 @@
         "_class": "appfactory.model.MenuPage",
         "id": -1,
         "layoutType": "GRID_9"
+    },
+    {
+        "_class": "appfactory.model.CompanyInfo",
+        "id": -1
     }
 ]

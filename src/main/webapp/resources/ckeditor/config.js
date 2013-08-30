@@ -8,6 +8,6 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 
-    config.language = 'zh-cn';
-    config.filebrowserUploadUrl = "/images/upload";
+//    config.language = 'zh-cn';
+//    config.filebrowserUploadUrl = "/images/upload";
 };
