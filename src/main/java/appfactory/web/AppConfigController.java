@@ -1,12 +1,8 @@
 package appfactory.web;
 
 import appfactory.dto.MenuPageConfig;
-import appfactory.model.Cell;
-import appfactory.model.MenuPage;
-import appfactory.model.PostCategory;
-import appfactory.repositories.CellRepository;
-import appfactory.repositories.MenuPageRepository;
-import appfactory.repositories.PostCategoryRepository;
+import appfactory.model.*;
+import appfactory.repositories.*;
 import appfactory.services.AppConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -97,9 +93,6 @@ public class AppConfigController extends AbstractBaseController {
         MenuPage defaultMenuPage = menuPageRepository.findDefaultMenuPage();
         model.addAttribute(defaultMenuPage);
 
-        //for json view
-        model.addAttribute("layout_type", defaultMenuPage.getLayoutType());
-        model.addAttribute("cells", defaultMenuPage.getCells());
 
         return "/appconfig/menu_page/layout_config";
     }

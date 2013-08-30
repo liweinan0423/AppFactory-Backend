@@ -43,7 +43,7 @@ public class PostsController extends AbstractBaseController {
     public String listPostCategories(Model model) {
         List<PostCategory> postCategories = postCategoryRepository.findAll();
         model.addAttribute("postCategories", postCategories);
-        return "post_categories/list";
+        return "/post_categories/list";
     }
 
     @RequestMapping("new")
@@ -66,7 +66,6 @@ public class PostsController extends AbstractBaseController {
     public String viewPostCategory(@PathVariable("category_id") PostCategory postCategory, Model model) {
 
         model.addAttribute("postCategory", postCategory);
-        model.addAttribute("category_id", postCategory.getId());
         return "/post_categories/show";
     }
 
