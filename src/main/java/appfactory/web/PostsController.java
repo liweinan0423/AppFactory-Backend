@@ -24,7 +24,6 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
-@RequestMapping("post_categories")
 public class PostsController extends AbstractBaseController {
 
     @Autowired
@@ -36,20 +35,20 @@ public class PostsController extends AbstractBaseController {
     @Autowired
     private PostRepository postRepository;
 
-    @RequestMapping
+    @RequestMapping("/post_categories")
     public String listPostCategories(Model model) {
         List<PostCategory> postCategories = postCategoryRepository.findAll();
         model.addAttribute("postCategories", postCategories);
         return "/post_categories/list";
     }
 
-    @RequestMapping("new")
+    @RequestMapping("/post_categories/new")
     public String showCreateCateogoryForm(Model model) {
         model.addAttribute(new PostCategory());
         return "/post_categories/new";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/post_categories", method = RequestMethod.POST)
     public String createCategory(@Valid PostCategory category, BindingResult result) {
         if (result.hasErrors()) {
             return "/post_categories/new";
@@ -59,19 +58,19 @@ public class PostsController extends AbstractBaseController {
         }
     }
 
-    @RequestMapping("{id}/edit")
+    @RequestMapping("/post_categories/{id}/edit")
     public String showEditCategoryForm(@PathVariable("id") PostCategory postCategory, Model model) {
         model.addAttribute(postCategory);
         return "/post_categories/edit";
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/post_categories/{id}", method = RequestMethod.DELETE)
     public String deletePostCategory(@PathVariable("id") Long id) {
         postCategoryRepository.delete(id);
         return "redirect:/post_categories";
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.PATCH)
+    @RequestMapping(value = "/post_categories/{id}", method = RequestMethod.PATCH)
     public String editCateogry(@PathVariable("id") Long id, @Valid PostCategory postCategory, BindingResult result) {
         if (result.hasErrors()) {
             return "/post_categories/edit";
@@ -86,7 +85,7 @@ public class PostsController extends AbstractBaseController {
 
     }
 
-    @RequestMapping("{category_id}")
+    @RequestMapping("/post_categories/{category_id}")
     public String viewPostCategory(@PathVariable("category_id") Long id, Model model) {
 
         PostCategory postCategory = postCategoryRepository.findOne(id);
@@ -95,14 +94,14 @@ public class PostsController extends AbstractBaseController {
     }
 
 
-    @RequestMapping(value = "{category_id}/posts/new", method = RequestMethod.GET)
+    @RequestMapping(value = "/post_categories/{category_id}/posts/new", method = RequestMethod.GET)
     public String showCreatePostForm(@PathVariable("category_id") Long category_id, Model model) {
 
         model.addAttribute(new Post());
         return "/posts/new";
     }
 
-    @RequestMapping(value = "{category_id}/posts", method = RequestMethod.POST)
+    @RequestMapping(value = "/post_categories/{category_id}/posts", method = RequestMethod.POST)
     public String createPost(@PathVariable("category_id") Long category_id, @Valid Post post, BindingResult result) {
         if (result.hasErrors()) {
             return "/posts/new";
@@ -111,14 +110,14 @@ public class PostsController extends AbstractBaseController {
         return "redirect:/post_categories/" + category_id;
     }
 
-    @RequestMapping("{category_id}/posts/{post_id}/edit")
+    @RequestMapping("/post_categories/{category_id}/posts/{post_id}/edit")
     public String showEditPostForm(@PathVariable("category_id") Long category_id, @PathVariable("post_id") Post post, Model model) {
         model.addAttribute("post_id", post.getId());
         model.addAttribute("post", post);
         return "/posts/edit";
     }
 
-    @RequestMapping(value = "{category_id}/posts/{post_id}", method = RequestMethod.PATCH)
+    @RequestMapping(value = "/post_categories/{category_id}/posts/{post_id}", method = RequestMethod.PATCH)
     public String updatePost(@Valid Post post, BindingResult result, Model model, @PathVariable("category_id") Long category_id, @PathVariable("post_id") Long post_id) {
         if (result.hasErrors()) {
             return "/posts/edit";
@@ -133,17 +132,22 @@ public class PostsController extends AbstractBaseController {
         return "redirect:/post_categories/" + category_id;
     }
 
-    @RequestMapping(value = "{category_id}/posts/{post_id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/post_categories/{category_id}/posts/{post_id}", method = RequestMethod.DELETE)
     public String deletePost(@PathVariable("category_id") Long category_id, @PathVariable("post_id") Long post_id) {
         postRepository.delete(post_id);
         return "redirect:/post_categories/" + category_id;
     }
 
-    @RequestMapping(value = "{category_id}/posts/{post_id}")
+    @RequestMapping(value = "/post_categories/{category_id}/posts/{post_id}")
     public String viewPost(@PathVariable("post_id") Long id, Model model) {
         Post post = postRepository.findOne(id);
         model.addAttribute(post);
 
         return "/posts/show";
+    }
+
+    @RequestMapping(value = "/posts/{id}")
+    public String showPost(@PathVariable("id")Long id, Model model) {
+        return viewPost(id, model);
     }
 }
