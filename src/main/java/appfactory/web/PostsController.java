@@ -62,6 +62,33 @@ public class PostsController extends AbstractBaseController {
         }
     }
 
+    @RequestMapping("{id}/edit")
+    public String showEditCategoryForm(@PathVariable("id") PostCategory postCategory, Model model) {
+        model.addAttribute(postCategory);
+        return "/post_categories/edit";
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    public String deletePostCategory(@PathVariable("id") Long id) {
+        postCategoryRepository.delete(id);
+        return "redirect:/post_categories";
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.PATCH)
+    public String editCateogry(@PathVariable("id") Long id, @Valid PostCategory postCategory, BindingResult result) {
+        if (result.hasErrors()) {
+            return "/post_categories/edit";
+        }
+
+        PostCategory old = postCategoryRepository.findOne(id);
+        old.setName(postCategory.getName());
+
+        postCategoryRepository.save(old);
+
+        return "redirect:/post_categories";
+
+    }
+
     @RequestMapping("{category_id}")
     public String viewPostCategory(@PathVariable("category_id") PostCategory postCategory, Model model) {
 

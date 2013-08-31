@@ -5,6 +5,6 @@
 <template:master pageTitle="新增分类">
     <jsp:body>
         <div class="page-header"></div>
-        <post_categories:category_form action="/post_categories" method="post"/>
+        <post_categories:category_form action="/post_categories/${postCategory.id}" method="patch"/>
     </jsp:body>
 </template:master>
