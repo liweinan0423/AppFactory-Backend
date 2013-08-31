@@ -1,6 +1,6 @@
 dependencies:
   pre:
-    - curl -O https://code.google.com/p/googleappengine/downloads/detail?name=appengine-java-sdk-1.8.3.zip&can=2&q=
+    - curl -O http://googleappengine.googlecode.com/files/appengine-java-sdk-1.8.3.zip
     - unzip -q -d $HOME appengine-java-sdk-1.8.3.zip
 
 deployment:
