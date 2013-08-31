@@ -1,0 +1,10 @@
+dependencies:
+  pre:
+    - curl -O https://code.google.com/p/googleappengine/downloads/detail?name=appengine-java-sdk-1.8.3.zip&can=2&q=
+    - unzip -q -d $HOME appengine-java-sdk-1.8.3.zip
+
+deployment:
+  appengine:
+    branch: master
+    commands:
+      - echo $APPENGINE_PASSWORD | $HOME/appengine-java-sdk/bin/appcfg.sh update --email=$APPENGINE_EMAIL --passin .
