@@ -7,4 +7,4 @@ deployment:
   appengine:
     branch: master
     commands:
-      - echo $APPENGINE_PASSWORD | $HOME/appengine-java-sdk-1.8.3/bin/appcfg.sh update --email=$APPENGINE_EMAIL --passin .
+      - echo $APPENGINE_PASSWORD | $HOME/appengine-java-sdk-1.8.3/bin/appcfg.sh update --email=$APPENGINE_EMAIL --passin target/appfactory-backend-1.0-SNAPSHOT
