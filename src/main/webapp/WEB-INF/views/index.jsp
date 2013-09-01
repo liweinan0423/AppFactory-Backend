@@ -4,7 +4,6 @@
 <%@ taglib prefix="posts" tagdir="/WEB-INF/tags/posts" %>
 <template:master activeMenu="home">
     <jsp:body>
-        <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="container">
             <h1>Hello, world!</h1>
 

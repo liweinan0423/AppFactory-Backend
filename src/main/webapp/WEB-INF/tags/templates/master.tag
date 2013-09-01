@@ -26,14 +26,20 @@
 </head>
 
 <body>
-
-<template:nav_bar activeMenu="${activeMenu}"/>
-
-<div class="jumbotron">
-    <jsp:doBody/>
+<div class="row">
+    <template:header/>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <template:side_bar activeMenu="${activeMenu}"/>
+        </div>
+        <div class="col-lg-8">
+            <jsp:doBody/>
+        </div>
+    </div>
 </div>
 <template:javaScript/>
-
 </body>
 </html>
 
