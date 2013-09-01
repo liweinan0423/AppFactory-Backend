@@ -1,7 +1,6 @@
 package appfactory.services;
 
 import appfactory.model.Post;
-import appfactory.model.PostCategory;
 
 /**
  * Created with IntelliJ IDEA.

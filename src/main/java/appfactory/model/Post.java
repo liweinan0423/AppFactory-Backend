@@ -1,7 +1,5 @@
 package appfactory.model;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 

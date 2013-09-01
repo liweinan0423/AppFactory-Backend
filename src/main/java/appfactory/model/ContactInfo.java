@@ -1,8 +1,6 @@
 package appfactory.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 
 /**
  * Created with IntelliJ IDEA.

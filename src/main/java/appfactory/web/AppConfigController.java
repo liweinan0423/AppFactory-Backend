@@ -1,14 +1,16 @@
 package appfactory.web;
 
-import appfactory.dto.MenuPageConfig;
-import appfactory.model.*;
-import appfactory.repositories.*;
+import appfactory.model.Cell;
+import appfactory.model.MenuPage;
+import appfactory.model.PostCategory;
+import appfactory.repositories.CellRepository;
+import appfactory.repositories.MenuPageRepository;
+import appfactory.repositories.PostCategoryRepository;
 import appfactory.services.AppConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,9 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
