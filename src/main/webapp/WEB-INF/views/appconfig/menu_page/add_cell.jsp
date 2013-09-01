@@ -8,21 +8,22 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <template:master>
     <jsp:body>
-        <form:form servletRelativeAction="/appconfig/menu_page/cells" enctype="multipart/form-data" method="post" class="form" role="form" commandName="cell">
-            <common:textField name="title" label="标题" />
-            <common:numberField name="order" label="排序" />
+        <form:form servletRelativeAction="/appconfig/menu_page/cells" enctype="multipart/form-data" method="post"
+                   class="form" role="form" commandName="cell">
+            <common:textField name="title" label="标题"/>
+            <common:numberField name="order" label="排序"/>
 
-            <common:selectField name="functionCode" label="功能代码" valueMap="${function_code_map}" />
+            <div class="form-group">
+                <label>功能代码</label>
 
-            <select>
-                <c:forEach items="${postCategories}" var="postCategory">
-                    <option value="${postCategory.id}">${postCategory.name}</option>
-                </c:forEach>
-             </select>
-
+                <div>
+                    <form:select id="function_select" path="functionCode" items="${function_code_map}"/>
+                    <form:select id="category_select" path="functionId" style="display:none;" items="${postCategories}" itemLabel="name" itemValue="id" />
+                    <form:select id="post_select" path="functionId" style="display:none;" items="${posts}" itemLabel="title" itemValue="id" />
+                </div>
+            </div>
             <label>图标</label>
-            <input type="file" name="icon" class="form-control" />
-
+            <input type="file" name="icon" class="form-control"/>
             <button type="submit" class="btn btn-success">保存</button>
         </form:form>
     </jsp:body>

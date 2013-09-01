@@ -9,10 +9,13 @@ package appfactory.dto;
  */
 public class CellData {
 
+    private String id;
     private String title;
-    private String iconUrl;
+    private Integer order;
+    private String iconURL;
     private String functionCode;
     private String functionId;
+    private String functionIdDisplay;
 
 
     public String getFunctionCode() {
@@ -31,12 +34,12 @@ public class CellData {
         this.functionId = functionId;
     }
 
-    public String getIconUrl() {
-        return iconUrl;
+    public String getIconURL() {
+        return iconURL;
     }
 
-    public void setIconUrl(String iconUrl) {
-        this.iconUrl = iconUrl;
+    public void setIconURL(String iconURL) {
+        this.iconURL = iconURL;
     }
 
     public String getTitle() {
@@ -45,5 +48,29 @@ public class CellData {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getFunctionIdDisplay() {
+        return functionIdDisplay;
+    }
+
+    public void setFunctionIdDisplay(String functionIdDisplay) {
+        this.functionIdDisplay = functionIdDisplay;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
     }
 }

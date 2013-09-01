@@ -14,7 +14,7 @@
         </div>
 
         <div class="row">
-            <c:forEach items="${menuPage.cells}" var="cell">
+            <c:forEach items="${cells}" var="cell">
                 <appconfig:cell cell="${cell}"></appconfig:cell>
             </c:forEach>
         </div>

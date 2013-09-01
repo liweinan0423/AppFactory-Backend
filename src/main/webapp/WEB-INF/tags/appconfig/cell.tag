@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="common" tagdir="/WEB-INF/tags/common" %>
 
-<%@ attribute name="cell" required="true" type="appfactory.model.Cell" %>
+<%@ attribute name="cell" required="true" type="appfactory.dto.CellData" %>
 
 <div class="cell_form col-md-6">
     <div class="row">
@@ -20,12 +20,12 @@
             </div>
             <div class="row">
                 <div class="col-md-6">功能代码</div>
-                <div class="col-md-6">${function_code_map[cell.functionCode]}</div>
+                <div class="col-md-6">${function_code_map[cell.functionCode]} - ${cell.functionIdDisplay}</div>
             </div>
         </div>
     </div>
     <div class="btn-group">
-        <button class="btn btn-primary">编辑</button>
+        <a class="btn btn-primary" href="<spring:url value='/appconfig/menu_page/cells/${cell.id}/edit' />">编辑</a>
         <a class="btn btn-danger" data-method="delete" data-confirm="are you sure?" href="<c:url value='/appconfig/menu_page/cells/${cell.id}' />">删除</a>
     </div>
 </div>
