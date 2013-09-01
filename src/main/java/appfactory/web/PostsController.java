@@ -90,8 +90,9 @@ public class PostsController extends AbstractBaseController {
     }
 
     @RequestMapping("{category_id}")
-    public String viewPostCategory(@PathVariable("category_id") PostCategory postCategory, Model model) {
+    public String viewPostCategory(@PathVariable("category_id") Long id, Model model) {
 
+        PostCategory postCategory = postCategoryRepository.findOne(id);
         model.addAttribute("postCategory", postCategory);
         return "/post_categories/show";
     }
@@ -110,7 +111,7 @@ public class PostsController extends AbstractBaseController {
             return "/posts/new";
         }
         postService.addPost(category_id, post);
-        return "redirect:/post_categories";
+        return "redirect:/post_categories/" + category_id;
     }
 
     @RequestMapping("{category_id}/posts/{post_id}/edit")
@@ -139,5 +140,13 @@ public class PostsController extends AbstractBaseController {
     public String deletePost(@PathVariable("category_id") Long category_id, @PathVariable("post_id") Long post_id) {
         postRepository.delete(post_id);
         return "redirect:/post_categories/" + category_id;
+    }
+
+    @RequestMapping(value = "{category_id}/posts/{post_id}")
+    public String viewPost(@PathVariable("post_id") Long id, Model model) {
+        Post post = postRepository.findOne(id);
+        model.addAttribute(post);
+
+        return "/posts/show";
     }
 }

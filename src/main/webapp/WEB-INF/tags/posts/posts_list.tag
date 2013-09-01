@@ -8,7 +8,11 @@
 <ul>
     <c:forEach items="${posts}" var="post">
         <li>
-            ${post.title}
+            <a href="<c:url value='/post_categories/${post.category.id}/posts/${post.id}' />">${post.title}</a> |
+            <div class="btn-group">
+                <a class="btn btn-primary" href="<c:url value='/post_categories/${post.category.id}/posts/${post.id}/edit' />">编辑</a>
+                <a class="btn btn-danger" href="<c:url value='/post_categories/${post.category.id}/posts/${post.id}' />" data-method="delete" data-confirm="are you sure?">删除</a>
+            </div>
         </li>
     </c:forEach>
 </ul>
