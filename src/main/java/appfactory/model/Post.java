@@ -1,6 +1,7 @@
 package appfactory.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -8,6 +9,7 @@ public class Post extends BaseEntity {
 
 
     private String title;
+    @Lob
     private String content;
 
     @ManyToOne

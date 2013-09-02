@@ -13,6 +13,8 @@
                            http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
                            http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository.xsd">
 
+    <context:property-placeholder location="file:///${user.home}/appfactory/application.properties" />
+
     <context:component-scan base-package="appfactory">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
@@ -34,14 +36,11 @@
         </property>
     </bean>
 
-    <jdbc:embedded-database type="H2" id="dataSource" />
-    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">-->
-        <!--<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>-->
-        <!--<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>-->
-        <!--<property name="username" value="hybris"/>-->
-        <!--<property name="password" value="1"/>-->
-    <!--</bean>-->
-
+    <!--<jdbc:embedded-database type="H2" id="dataSource" />-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${db.driver}"/>
+        <property name="url" value="${db.url}"/>
+    </bean>
     <tx:annotation-driven/>
 
 
