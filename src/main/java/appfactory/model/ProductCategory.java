@@ -10,7 +10,6 @@ public class ProductCategory extends BaseEntity {
     @NotBlank
     private String name;
 
-    @NotBlank
     private String iconURL;
 
     public String getName() {

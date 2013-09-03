@@ -94,7 +94,7 @@ public class AppConfigController extends AbstractBaseController {
 
         Cell cell = cellDataToCellConverter.convert(cellData);
 
-        appConfigService.addCellToMenuPage(cell, icon, servletContext.getRealPath("/upload"));
+        appConfigService.addCellToMenuPage(cell, icon, servletContext.getRealPath("/"));
 
         return "redirect:/appconfig/menu_page/cells";
     }
