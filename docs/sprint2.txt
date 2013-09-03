@@ -1,0 +1,76 @@
+1	热销产品 carousel
+	REQUEST	
+		GET /products/promotions
+	RESPONSE
+		{
+			promotions: {
+				{
+					text: "<promotion_text>",
+					iconURL: "<icon_URL>"
+					type: "PRODUCT_CATEGORY/PRODUCT"
+					target_id: "PRODUCT_ID/PRODUCT_CATEGORY_ID"
+				},
+				{
+					text: "<promotion_text>",
+					iconURL: "<icon_URL>"
+					type: "PRODUCT_CATEGORY/PRODUCT"
+					target_id: "PRODUCT_ID/PRODUCT_CATEGORY_ID"
+				},
+				
+			}
+		}
+	
+2	产品分类:
+	REQUEST
+		GET /products/categories
+	RESPONSE
+		{
+			categories: [
+				{
+					id:"<id>",
+					name: "<name>",
+					iconURL:"<icon_URL>",
+					desc: "<desc>"
+				}
+			]
+		}
+
+3	产品列表
+	REQUEST
+		GET /products/categories/{category_id}
+	RESPONSE
+		{
+			products: [
+				{
+					id: "",
+					name: "",
+					iconURL: "",
+					desc: "",
+					price: ""
+				}
+			]
+		}
+4	产品详情
+	REQUEST
+		GET /products/{product_id}
+	RESPONSE
+		{
+			id: "",
+			name: "",
+			desc: "",
+			images: [
+				{
+					url:""
+				}
+			],
+			//产品的size（规格）是在后台动态配置的
+			//每种规格的价格不一样
+			sizes: [
+				{
+					name:"",
+					value:"",
+					price: ""
+				}
+			]
+		}
+		
