@@ -12,6 +12,8 @@ public class ProductCategory extends BaseEntity {
 
     private String iconURL;
 
+    private String desc;
+
     public String getName() {
         return name;
     }
@@ -26,5 +28,13 @@ public class ProductCategory extends BaseEntity {
 
     public void setIconURL(String iconURL) {
         this.iconURL = iconURL;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 }

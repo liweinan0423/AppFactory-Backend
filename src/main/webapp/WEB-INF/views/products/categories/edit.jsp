@@ -10,6 +10,7 @@
         <form:form cssClass="form" servletRelativeAction="/products/categories" method="patch" commandName="productCategory">
             <form:hidden path="id" />
             <common:textField name="name" label="分类名称" />
+            <common:textField name="desc" label="描述" />
             <button class="btn btn-default" type="submit">保存</button>
         </form:form>
     </jsp:body>

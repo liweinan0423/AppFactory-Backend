@@ -9,6 +9,7 @@
         <div class="page-header"></div>
         <form:form cssClass="form" servletRelativeAction="/products/categories" method="post" enctype="multipart/form-data" commandName="productCategory">
             <common:textField name="name" label="分类名称" />
+            <common:textField name="desc" label="描述" />
             <label>图标</label>
             <input type="file" class="form-control" name="icon" />
 

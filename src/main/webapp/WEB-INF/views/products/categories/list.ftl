@@ -1,10 +1,12 @@
 {
     "categories": [
+        <#list productCategories as category>
         {
-            "id":"<id>",
-            "name": "<name>",
-            "iconURL":"<icon_URL>",
-            "desc": "<desc>"
-        }
+            "id":"${category.id}",
+            "name": "${category.name}",
+            "iconURL":"${category.iconURL}",
+            "desc": "${category.desc}"
+        }<#if category_has_next>,</#if>
+        </#list>
     ]
 }

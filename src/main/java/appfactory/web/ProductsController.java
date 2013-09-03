@@ -81,6 +81,7 @@ public class ProductsController {
         ProductCategory old = productCategoryRepository.findOne(category.getId());
 
         old.setName(category.getName());
+        old.setDesc(category.getDesc());
 
         productCategoryRepository.save(old);
 
