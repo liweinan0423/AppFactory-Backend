@@ -1,8 +1,11 @@
 package appfactory.web;
 
 
+import appfactory.dto.ProductData;
+import appfactory.model.Product;
 import appfactory.model.ProductCategory;
 import appfactory.repositories.ProductCategoryRepository;
+import appfactory.repositories.ProductRepository;
 import appfactory.services.ProductService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +34,9 @@ public class ProductsController {
 
     @Autowired
     private ServletContext servletContext;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     @RequestMapping("/products/promotions")
     public String getPromotions(Model model) {
@@ -112,6 +118,28 @@ public class ProductsController {
     @RequestMapping("/products/{id}")
     public String getProductDetail(@PathVariable("id")Long id, Model model) {
         return "/products/show";
+    }
+
+    @RequestMapping("/products")
+    public String listAllProducts(Model model) {
+        List<Product> products = productRepository.findAll();
+        model.addAttribute("products", products);
+
+        return "/products/list";
+    }
+
+    @RequestMapping("/products/new")
+    public String newProduct(Model model) {
+        model.addAttribute("productData", new ProductData());
+        return "/products/new";
+    }
+
+    @RequestMapping(value = "/products", method = RequestMethod.POST)
+    public String createProduct(ProductData productData, BindingResult result) {
+
+
+
+        return "redirect:/products";
     }
 
 }

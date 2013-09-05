@@ -6,3 +6,5 @@
 <script type="text/javascript" src="<spring:url value='/resources/common/js/ujs.js' />"></script>
 <script type="text/javascript" src="<spring:url value='/resources/ckeditor/ckeditor.js'/>"></script>
 <script type="text/javascript" src="<spring:url value='/resources/common/js/appfactory.js'/>"></script>
+
+<script type="text/javascript" src="<spring:url value="/resources/common/js/product.js" />"></script>
