@@ -5,7 +5,6 @@ import appfactory.model.Product;
 import appfactory.model.ProductImage;
 import appfactory.utils.FileUploadUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
@@ -18,8 +17,7 @@ import java.io.IOException;
  * Time: 10:46 AM
  * To change this template use File | Settings | File Templates.
  */
-@Component("productDataConverter")
-public class ProductDataConverter implements Populator<ProductData, Product> {
+public class ProductPopulator implements Populator<ProductData, Product> {
 
     @Autowired
     private ServletContext servletContext;
@@ -42,8 +40,22 @@ public class ProductDataConverter implements Populator<ProductData, Product> {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
+        product.addProductImage(primaryImage);
 
         for (MultipartFile file : source.getOtherImages()) {
+
+            ProductImage productImage = new ProductImage();
+            productImage.setName(file.getOriginalFilename());
+            productImage.setPrimary(false);
+
+            try {
+                String uuidFileName = FileUploadUtils.generateUUIDFileNameAndSaveFile(file, servletContext.getRealPath("/upload"));
+                productImage.setUrl("/upload/" + uuidFileName);
+                product.addProductImage(productImage);
+            } catch (IOException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+
         }
     }
 }

@@ -4,8 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-
-    <bean id="cellToCellDataConverter" class="appfactory.dto.converters.PopulatingConverter">
+    <bean id="cellToCellDataConverter" class="appfactory.dto.converters.CombinationPopulator">
         <property name="populators">
             <list>
                 <bean class="appfactory.dto.converters.CellDataPopulator"></bean>
@@ -14,10 +13,18 @@
     </bean>
 
 
-    <bean id="cellDataToCellConverter" class="appfactory.dto.converters.PopulatingConverter">
+    <bean id="cellDataToCellConverter" class="appfactory.dto.converters.CombinationPopulator">
         <property name="populators">
             <list>
                 <bean class="appfactory.dto.converters.CellPopulator"></bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="productDataConverter" class="appfactory.dto.converters.CombinationPopulator">
+        <property name="populators">
+            <list>
+                <bean class="appfactory.dto.converters.ProductPopulator" />
             </list>
         </property>
     </bean>

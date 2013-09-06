@@ -1,6 +1,7 @@
 package appfactory.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -67,5 +68,14 @@ public class Product extends BaseEntity {
         }
 
         return null;
+    }
+
+
+    public void addProductImage(ProductImage image) {
+        if (productImages == null) {
+            productImages = new ArrayList<ProductImage>();
+        }
+
+        productImages.add(image);
     }
 }

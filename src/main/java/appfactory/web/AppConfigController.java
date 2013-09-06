@@ -1,7 +1,7 @@
 package appfactory.web;
 
 import appfactory.dto.CellData;
-import appfactory.dto.converters.PopulatingConverter;
+import appfactory.dto.converters.Populator;
 import appfactory.model.Cell;
 import appfactory.model.MenuPage;
 import appfactory.model.Post;
@@ -12,7 +12,6 @@ import appfactory.repositories.PostCategoryRepository;
 import appfactory.repositories.PostRepository;
 import appfactory.services.AppConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -56,10 +55,10 @@ public class AppConfigController extends AbstractBaseController {
     private AppConfigService appConfigService;
 
     @Resource(name = "cellToCellDataConverter")
-    private PopulatingConverter<Cell, CellData> cellToCellDataConverter;
+    private Populator<Cell, CellData> cellDataPopulator;
 
     @Resource(name = "cellDataToCellConverter")
-    private PopulatingConverter<CellData, Cell> cellDataToCellConverter;
+    private Populator<CellData, Cell> cellPopulator;
 
     @Autowired
     private ServletContext servletContext;
@@ -73,7 +72,7 @@ public class AppConfigController extends AbstractBaseController {
 
         for (Cell cell : menuPage.getCells()) {
             CellData data = new CellData();
-            cellToCellDataConverter.convert(cell, data);
+            cellDataPopulator.populate(cell, data);
             cells.add(data);
         }
 
@@ -96,7 +95,7 @@ public class AppConfigController extends AbstractBaseController {
         }
 
         Cell cell = new Cell();
-        cellDataToCellConverter.convert(cellData, cell);
+        cellPopulator.populate(cellData, cell);
 
         appConfigService.addCellToMenuPage(cell, icon, servletContext.getRealPath("/"));
 
@@ -113,7 +112,7 @@ public class AppConfigController extends AbstractBaseController {
     public String showEditCellForm(@PathVariable("cell_id") Long id, Model model) {
         Cell cell = cellRepository.findOne(id);
         CellData cellData = new CellData();
-        cellToCellDataConverter.convert(cell, cellData);
+        cellDataPopulator.populate(cell, cellData);
 
         model.addAttribute("cell", cellData);
         preparePostAndCategoryData(model);
@@ -127,7 +126,7 @@ public class AppConfigController extends AbstractBaseController {
         }
 
         Cell cell = cellRepository.findOne(Long.valueOf(cellData.getId()));
-        cellDataToCellConverter.convert(cellData, cell);
+        cellPopulator.populate(cellData, cell);
 
         cellRepository.save(cell);
 

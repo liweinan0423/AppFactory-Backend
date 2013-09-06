@@ -9,4 +9,5 @@
     <li><a href="<c:url value='/company_info/edit' />">企业信息</a></li>
     <li><a href="<c:url value='/contact_info' />">一键呼叫</a></li>
     <li><a href="<c:url value="/products/categories" />">产品分类</a></li>
+    <li><a href="<c:url value="/products" />">产品</a></li>
 </ul>

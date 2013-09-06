@@ -137,8 +137,18 @@ public class ProductsController {
     @RequestMapping(value = "/products", method = RequestMethod.POST)
     public String createProduct(ProductData productData, BindingResult result) {
 
+        if (result.hasErrors()) {
+            return "/products/new";
+        }
 
+        productService.createProduct(productData);
 
+        return "redirect:/products";
+    }
+
+    @RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE)
+    public String deleteProduct(@PathVariable("id") Long id) {
+        productRepository.delete(id);
         return "redirect:/products";
     }
 

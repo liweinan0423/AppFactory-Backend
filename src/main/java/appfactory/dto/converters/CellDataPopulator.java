@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
  * Time: 下午3:18
  * To change this template use File | Settings | File Templates.
  */
-@Component("cellToCellDataConverter")
 public class CellDataPopulator implements Populator<Cell, CellData> {
 
     @Autowired

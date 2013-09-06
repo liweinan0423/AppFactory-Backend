@@ -46,4 +46,6 @@
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
     <repository:jackson-populator locations="classpath:data.json"/>
+
+    <import resource="springmvc-converters.xml" />
 </beans>

@@ -9,7 +9,7 @@ import java.util.List;
  * Time: 11:01 AM
  * To change this template use File | Settings | File Templates.
  */
-public abstract class PopulatingConverter<SOURCE, TARGET> {
+public class CombinationPopulator<SOURCE, TARGET> implements Populator<SOURCE, TARGET> {
 
     private List<Populator<SOURCE, TARGET>> populators;
 
@@ -22,6 +22,12 @@ public abstract class PopulatingConverter<SOURCE, TARGET> {
         this.populators = populators;
     }
 
-
-    public abstract void convert(SOURCE source, TARGET target);
+    @Override
+    public void populate(SOURCE source, TARGET target) {
+        if (populators != null) {
+            for (Populator<SOURCE, TARGET> populator: populators) {
+                populator.populate(source, target);
+            }
+        }
+    }
 }

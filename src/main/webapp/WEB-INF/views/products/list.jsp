@@ -21,18 +21,20 @@
                     <tr>
                         <td>${product.name}</td>
                         <td>
-                            <img class="img-thumbnail" src="<c:url value='${product.primaryImage.url}' />" />
+                            <img class="img-thumbnail" width="100" height="100" src="<c:url value='${product.primaryImage.url}' />" />
+                        </td>
+                        <td>
+                            ${product.category.name}
                         </td>
                         <td>
                             <div class="btn-group">
                                 <a class="btn btn-primary" href="">修改</a>
-                                <a class="btn btn-danger" data-method="delete" data-confirm="are you sure?" href="">删除</a>
+                                <a class="btn btn-danger" data-method="delete" data-confirm="are you sure?" href="<c:url value='/products/${product.id}' />">删除</a>
                             </div>
                         </td>
                     </tr>
                 </c:forEach>
                 </tbody>
-
             </table>
         </div>
     </jsp:body>

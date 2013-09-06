@@ -15,7 +15,6 @@ import org.springframework.util.StringUtils;
  * Time: 下午4:19
  * To change this template use File | Settings | File Templates.
  */
-@Component("cellDataToCellConverter")
 public class CellPopulator implements Populator<CellData, Cell> {
 
     @Autowired
