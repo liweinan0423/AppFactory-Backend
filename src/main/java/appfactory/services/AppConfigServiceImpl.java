@@ -43,14 +43,4 @@ public class AppConfigServiceImpl implements AppConfigService {
 
         cellRepository.save(cell);
     }
-
-    @Override
-    public List<CellData> getCells() {
-        MenuPage menuPage = menuPageRepository.findDefaultMenuPage();
-        for (Cell cell : menuPage.getCells()) {
-
-        }
-
-        return null;
-    }
 }

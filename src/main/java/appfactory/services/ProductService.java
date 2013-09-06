@@ -1,5 +1,6 @@
 package appfactory.services;
 
+import appfactory.dto.ProductData;
 import appfactory.model.ProductCategory;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,5 +16,8 @@ import java.io.IOException;
 public interface ProductService {
 
     public void createCategory(ProductCategory category, MultipartFile icon, String uploadDir) throws IOException;
+
+
+    public void createProduct(ProductData productData);
 
 }

@@ -1,12 +1,15 @@
 package appfactory.web;
 
+import appfactory.utils.FileUploadUtils;
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
@@ -23,22 +26,18 @@ import java.util.UUID;
 @RequestMapping(value = "/images/upload", method = RequestMethod.POST)
 public class ImageUploadController extends AbstractBaseController {
 
+
+    @Autowired
+    private ServletContext servletContext;
+
+
     @RequestMapping
     public String upload(MultipartFile upload, HttpServletRequest request, Model model) throws IOException {
 
-        String uploadDirPath = request.getSession().getServletContext().getRealPath("/upload");
 
-        String fileExtension = upload.getOriginalFilename().split("\\.")[1];
+        String fileName = FileUploadUtils.generateUUIDFileNameAndSaveFile(upload, servletContext.getRealPath("/upload"));
 
-        String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-
-        String fileName = uuid + "." + fileExtension;
-
-        String fileUrl = request.getContextPath() + "/upload/" + fileName;
-
-        FileUtils.copyInputStreamToFile(upload.getInputStream(), new File(uploadDirPath, fileName));
-
-        model.addAttribute("fileUrl", fileUrl);
+        model.addAttribute("fileUrl", "/upload/" + fileName);
 
         return "/images/upload";
     }

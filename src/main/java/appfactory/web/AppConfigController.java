@@ -1,6 +1,7 @@
 package appfactory.web;
 
 import appfactory.dto.CellData;
+import appfactory.dto.converters.PopulatingConverter;
 import appfactory.model.Cell;
 import appfactory.model.MenuPage;
 import appfactory.model.Post;
@@ -55,10 +56,10 @@ public class AppConfigController extends AbstractBaseController {
     private AppConfigService appConfigService;
 
     @Resource(name = "cellToCellDataConverter")
-    private Converter<Cell, CellData> cellToCellDataConverter;
+    private PopulatingConverter<Cell, CellData> cellToCellDataConverter;
 
     @Resource(name = "cellDataToCellConverter")
-    private Converter<CellData, Cell> cellDataToCellConverter;
+    private PopulatingConverter<CellData, Cell> cellDataToCellConverter;
 
     @Autowired
     private ServletContext servletContext;
@@ -71,7 +72,9 @@ public class AppConfigController extends AbstractBaseController {
         List<CellData> cells = new ArrayList<CellData>();
 
         for (Cell cell : menuPage.getCells()) {
-            cells.add(cellToCellDataConverter.convert(cell));
+            CellData data = new CellData();
+            cellToCellDataConverter.convert(cell, data);
+            cells.add(data);
         }
 
         model.addAttribute(menuPage);
@@ -92,7 +95,8 @@ public class AppConfigController extends AbstractBaseController {
             return "/appconfig/menu_page/add_cell";
         }
 
-        Cell cell = cellDataToCellConverter.convert(cellData);
+        Cell cell = new Cell();
+        cellDataToCellConverter.convert(cellData, cell);
 
         appConfigService.addCellToMenuPage(cell, icon, servletContext.getRealPath("/"));
 
@@ -108,7 +112,8 @@ public class AppConfigController extends AbstractBaseController {
     @RequestMapping(value = "menu_page/cells/{cell_id}/edit")
     public String showEditCellForm(@PathVariable("cell_id") Long id, Model model) {
         Cell cell = cellRepository.findOne(id);
-        CellData cellData = cellToCellDataConverter.convert(cell);
+        CellData cellData = new CellData();
+        cellToCellDataConverter.convert(cell, cellData);
 
         model.addAttribute("cell", cellData);
         preparePostAndCategoryData(model);
@@ -121,7 +126,8 @@ public class AppConfigController extends AbstractBaseController {
             return "/appconfig/menu_page/edit_cell";
         }
 
-        Cell cell = cellDataToCellConverter.convert(cellData);
+        Cell cell = cellRepository.findOne(Long.valueOf(cellData.getId()));
+        cellDataToCellConverter.convert(cellData, cell);
 
         cellRepository.save(cell);
 

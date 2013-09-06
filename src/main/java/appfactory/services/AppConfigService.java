@@ -18,6 +18,4 @@ public interface AppConfigService {
 
     public void addCellToMenuPage(Cell cell, MultipartFile icon, String uploadDirPath) throws IOException;
 
-    public List<CellData> getCells();
-
 }

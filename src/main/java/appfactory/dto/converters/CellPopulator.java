@@ -16,14 +16,13 @@ import org.springframework.util.StringUtils;
  * To change this template use File | Settings | File Templates.
  */
 @Component("cellDataToCellConverter")
-public class CellDataToCellConverter implements Converter<CellData, Cell> {
+public class CellPopulator implements Populator<CellData, Cell> {
 
     @Autowired
     private MenuPageRepository menuPageRepository;
 
     @Override
-    public Cell convert(CellData cellData) {
-        Cell cell = new Cell();
+    public void populate(CellData cellData, Cell cell) {
         if (cellData.getId() != null) {
             cell.setId(Long.valueOf(cellData.getId()));
         }
@@ -35,9 +34,5 @@ public class CellDataToCellConverter implements Converter<CellData, Cell> {
         } else {
             cell.setFunctionCode(cellData.getFunctionCode() + "/" + cellData.getFunctionId());
         }
-
-
-        cell.setMenuPage(menuPageRepository.findDefaultMenuPage());
-        return cell;
     }
 }

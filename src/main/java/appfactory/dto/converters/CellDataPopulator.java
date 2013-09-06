@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  * To change this template use File | Settings | File Templates.
  */
 @Component("cellToCellDataConverter")
-public class CellToCellDataConverter implements Converter<Cell, CellData> {
+public class CellDataPopulator implements Populator<Cell, CellData> {
 
     @Autowired
     private PostCategoryRepository postCategoryRepository;
@@ -25,8 +25,7 @@ public class CellToCellDataConverter implements Converter<Cell, CellData> {
     private PostRepository postRepository;
 
     @Override
-    public CellData convert(Cell cell) {
-        CellData result = new CellData();
+    public void populate(Cell cell, CellData result) {
         result.setId(cell.getId().toString());
         result.setOrder(cell.getOrder());
         result.setTitle(cell.getTitle());
@@ -47,7 +46,5 @@ public class CellToCellDataConverter implements Converter<Cell, CellData> {
             }
 
         }
-
-        return result;
     }
 }
