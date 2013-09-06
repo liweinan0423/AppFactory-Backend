@@ -152,4 +152,11 @@ public class ProductsController {
         return "redirect:/products";
     }
 
+    @RequestMapping("/products/{id}/edit")
+    public String editProduct(@PathVariable("id")Long id, Model model) {
+        Product product = productRepository.findOne(id);
+        model.addAttribute("productData", product);
+        return "/products/edit";
+    }
+
 }

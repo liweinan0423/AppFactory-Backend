@@ -28,7 +28,7 @@
                         </td>
                         <td>
                             <div class="btn-group">
-                                <a class="btn btn-primary" href="">修改</a>
+                                <a class="btn btn-primary" href="<c:url value='/products/${product.id}/edit' />">修改</a>
                                 <a class="btn btn-danger" data-method="delete" data-confirm="are you sure?" href="<c:url value='/products/${product.id}' />">删除</a>
                             </div>
                         </td>

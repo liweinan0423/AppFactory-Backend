@@ -4,3 +4,4 @@
 <spring:url value="/resources/bootstrap-3.0/css/bootstrap-theme.min.css" var="bootstrap_theme_url" />
 <link rel="stylesheet" type="text/css" href="${bootstrap_url}" />
 <link rel="stylesheet" type="text/css" href="${bootstrap_theme_url}" />
+<link rel="stylesheet" type="text/css" href="<spring:url value='/resources/common/css/appfactory.css' />" />
