@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
 import java.io.IOException;
 
 /**
@@ -35,11 +36,19 @@ public class DefaultProductService implements ProductService {
     @Qualifier("productDataConverter")
     private Populator<ProductData, Product> productPopulator;
 
+
+    @Autowired
+    private ServletContext servletContext;
+
     @Override
     public void createCategory(ProductCategory category, MultipartFile icon, String webRootDirPath) throws IOException {
         String fileName = FileUploadUtils.generateUUIDFileNameAndSaveFile(icon, webRootDirPath + "/upload");
 
         category.setIconURL("/upload/" + fileName);
+
+        if (category.getParent() != null && category.getParent().getId() != null) {
+            category.setParent(productCategoryRepository.findOne(category.getParent().getId()));
+        }
 
         productCategoryRepository.save(category);
 
@@ -48,6 +57,13 @@ public class DefaultProductService implements ProductService {
     @Override
     public void createProduct(ProductData productData) {
         Product product = new Product();
+        productPopulator.populate(productData, product);
+
+        productRepository.save(product);
+    }
+
+    @Override
+    public void updateProduct(Product product, ProductData productData) {
         productPopulator.populate(productData, product);
 
         productRepository.save(product);

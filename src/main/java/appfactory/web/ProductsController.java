@@ -4,6 +4,7 @@ package appfactory.web;
 import appfactory.dto.ProductData;
 import appfactory.model.Product;
 import appfactory.model.ProductCategory;
+import appfactory.model.ProductSize;
 import appfactory.repositories.ProductCategoryRepository;
 import appfactory.repositories.ProductRepository;
 import appfactory.services.ProductService;
@@ -46,7 +47,7 @@ public class ProductsController {
     @RequestMapping("/products/categories")
     public String getProductCategories(Model model) {
 
-        List<ProductCategory> productCategories = productCategoryRepository.findAll();
+        List<ProductCategory> productCategories = productCategoryRepository.findRoots();
         model.addAttribute("productCategories", productCategories);
 
         return "/products/categories/list";
@@ -55,6 +56,7 @@ public class ProductsController {
     @RequestMapping("/products/categories/new")
     public String showCreateCategoryForm(Model model) {
         model.addAttribute(new ProductCategory());
+        model.addAttribute("categories", productCategoryRepository.findAll());
         return "/products/categories/new";
     }
 
@@ -68,14 +70,6 @@ public class ProductsController {
         productService.createCategory(category, icon, servletContext.getRealPath("/"));
 
         return "redirect:/products/categories";
-    }
-
-    @RequestMapping("/products/categories/{id}/edit")
-    public String editCategory(@PathVariable("id")Long id, Model model) {
-        ProductCategory category = productCategoryRepository.findOne(id);
-        model.addAttribute("productCategory", category);
-
-        return "/products/categories/edit";
     }
 
     @RequestMapping(value = "/products/categories", method = RequestMethod.PATCH)
@@ -111,12 +105,15 @@ public class ProductsController {
     @RequestMapping("/products/categories/{id}")
     public String showCategoryDetail(@PathVariable("id") Long id, Model model) {
 
+        ProductCategory category = productCategoryRepository.findOne(id);
+
+        model.addAttribute("children", category.getChildren());
 
         return "/products/categories/show";
     }
 
     @RequestMapping("/products/{id}")
-    public String getProductDetail(@PathVariable("id")Long id, Model model) {
+    public String getProductDetail(@PathVariable("id") Long id, Model model) {
         return "/products/show";
     }
 
@@ -131,6 +128,9 @@ public class ProductsController {
     @RequestMapping("/products/new")
     public String newProduct(Model model) {
         model.addAttribute("productData", new ProductData());
+
+        List<ProductCategory> categories = productCategoryRepository.findAll();
+        model.addAttribute("categories", categories);
         return "/products/new";
     }
 
@@ -153,10 +153,31 @@ public class ProductsController {
     }
 
     @RequestMapping("/products/{id}/edit")
-    public String editProduct(@PathVariable("id")Long id, Model model) {
+    public String editProduct(@PathVariable("id") Long id, Model model) {
         Product product = productRepository.findOne(id);
         model.addAttribute("productData", product);
         return "/products/edit";
+    }
+
+    @RequestMapping(value = "/products", method = RequestMethod.PATCH)
+    public String updateProduct(@Valid ProductData productData) {
+        Product product = productRepository.findOne(productData.getId());
+
+        productService.updateProduct(product, productData);
+
+        return "redirect:/products";
+
+    }
+
+    @RequestMapping("/products/{id}/sizes/add")
+    public String addSizeForm(Model model) {
+        model.addAttribute(new ProductSize());
+        return "/products/sizes/add";
+    }
+
+    @RequestMapping(value = "/products/{id}/sizes", method = RequestMethod.POST)
+    public String addSize(@PathVariable("id")Long id) {
+        return "/products/" + id;
     }
 
 }

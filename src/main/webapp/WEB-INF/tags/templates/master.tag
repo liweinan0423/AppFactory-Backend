@@ -6,6 +6,7 @@
 
 <%@ attribute name="pageTitle" required="false" rtexprvalue="true" %>
 <%@ attribute name="activeMenu" %>
+<%@ attribute name="pageScripts" required="false" fragment="true" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +41,7 @@
     </div>
 </div>
 <template:javaScript/>
+<jsp:invoke fragment="pageScripts" />
 </body>
 </html>
 

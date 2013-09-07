@@ -1,6 +1,7 @@
 package appfactory.services;
 
 import appfactory.dto.ProductData;
+import appfactory.model.Product;
 import appfactory.model.ProductCategory;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,4 +21,5 @@ public interface ProductService {
 
     public void createProduct(ProductData productData);
 
+    void updateProduct(Product product, ProductData productData);
 }

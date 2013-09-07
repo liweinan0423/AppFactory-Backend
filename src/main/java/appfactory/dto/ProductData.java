@@ -1,5 +1,6 @@
 package appfactory.dto;
 
+import appfactory.model.ProductCategory;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class ProductData {
     private Long id;
     private String name;
     private String desc;
+    private ProductCategory category;
 
     private MultipartFile primaryImage;
 
@@ -59,5 +61,13 @@ public class ProductData {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public ProductCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(ProductCategory category) {
+        this.category = category;
     }
 }

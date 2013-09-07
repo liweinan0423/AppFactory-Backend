@@ -3,6 +3,7 @@ package appfactory.dto.converters;
 import appfactory.dto.ProductData;
 import appfactory.model.Product;
 import appfactory.model.ProductImage;
+import appfactory.repositories.ProductCategoryRepository;
 import appfactory.utils.FileUploadUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,6 +23,9 @@ public class ProductPopulator implements Populator<ProductData, Product> {
     @Autowired
     private ServletContext servletContext;
 
+    @Autowired
+    private ProductCategoryRepository productCategoryRepository;
+
 
     @Override
     public void populate(ProductData source, Product product) {
@@ -32,6 +36,8 @@ public class ProductPopulator implements Populator<ProductData, Product> {
         ProductImage primaryImage = new ProductImage();
         primaryImage.setPrimary(true);
         primaryImage.setName(source.getPrimaryImage().getOriginalFilename());
+
+        product.setCategory(productCategoryRepository.findOne(source.getCategory().getId()));
 
         try {
             String uuidFileName = FileUploadUtils.generateUUIDFileNameAndSaveFile(source.getPrimaryImage(), servletContext.getRealPath("/upload"));

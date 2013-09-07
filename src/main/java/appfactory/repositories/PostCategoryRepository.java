@@ -1,7 +1,11 @@
 package appfactory.repositories;
 
 import appfactory.model.PostCategory;
+import appfactory.model.ProductCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
