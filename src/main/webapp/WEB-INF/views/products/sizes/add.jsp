@@ -10,7 +10,7 @@
     <form:form cssClass="form" servletRelativeAction="/products/${id}/sizes" method="post" commandName="productSize">
 
         <common:textField name="name" label="名称" />
-        <common:textField name="value" label="值" />
+        <common:textField name="price" label="价格" />
 
         <button class="btn btn-default" type="submit">保存</button>
     </form:form>

@@ -114,6 +114,8 @@ public class ProductsController {
 
     @RequestMapping("/products/{id}")
     public String getProductDetail(@PathVariable("id") Long id, Model model) {
+        Product product = productRepository.findOne(id);
+        model.addAttribute("product", product);
         return "/products/show";
     }
 
@@ -170,14 +172,19 @@ public class ProductsController {
     }
 
     @RequestMapping("/products/{id}/sizes/add")
-    public String addSizeForm(Model model) {
+    public String addSizeForm(@PathVariable("id")Long id, Model model) {
         model.addAttribute(new ProductSize());
         return "/products/sizes/add";
     }
 
     @RequestMapping(value = "/products/{id}/sizes", method = RequestMethod.POST)
-    public String addSize(@PathVariable("id")Long id) {
-        return "/products/" + id;
+    public String addSize(@PathVariable("id")Long id, ProductSize size) {
+
+        Product product = productRepository.findOne(id);
+        product.addSize(size);
+        productRepository.save(product);
+
+        return "redirect:/products/" + id;
     }
 
 }

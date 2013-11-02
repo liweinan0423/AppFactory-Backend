@@ -78,4 +78,12 @@ public class Product extends BaseEntity {
 
         productImages.add(image);
     }
+
+    public void addSize(ProductSize size) {
+        if (this.sizes == null) {
+            sizes = new ArrayList<ProductSize>();
+        }
+
+        sizes.add(size);
+    }
 }

@@ -10,6 +10,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>名称</th>
                         <th>图片</th>
                         <th>所属分类</th>
@@ -19,6 +20,7 @@
                 <tbody>
                 <c:forEach items="${products}" var="product">
                     <tr>
+                        <td>${product.id}</td>
                         <td>${product.name}</td>
                         <td>
                             <img class="img-thumbnail" width="100" height="100" src="<c:url value='${product.primaryImage.url}' />" />
